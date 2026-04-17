@@ -1,0 +1,20 @@
+{
+  "short_name": "OMR HU",
+  "name": "Orthodox Members Registry - Hawassa University",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#800020",
+  "background_color": "#2C1810"
+}

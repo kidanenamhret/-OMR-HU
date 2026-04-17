@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: #FDF5E6;
+  background-color: #2C1810;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.glass {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 215, 0, 0.1);
+}
+
+.btn-primary {
+  @apply bg-orthodox-burgundy text-white px-4 py-2 rounded-lg transition-all hover:bg-opacity-90 active:scale-95 disabled:opacity-50;
+}
+
+.btn-secondary {
+  @apply bg-transparent border border-orthodox-gold text-orthodox-gold px-4 py-2 rounded-lg transition-all hover:bg-orthodox-gold hover:text-black;
+}
+
+.card {
+  @apply glass p-6 rounded-xl border border-orthodox-gold/20 shadow-xl;
+}
+
+.input-field {
+  @apply w-full bg-zinc-900 border border-zinc-800 rounded-lg px-4 py-2 focus:outline-none focus:border-orthodox-gold transition-colors text-white;
+}
+
+.label-field {
+  @apply block text-zinc-400 text-sm mb-1 ml-1;
+}
