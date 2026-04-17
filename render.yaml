@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: omr-hu-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: MONGO_URI
+        value: mongodb+srv://mesfin6323_db_user:bWtxmBI9VM2KMC2Q@cluster0.0vf9wd3.mongodb.net/orthodox_registry?retryWrites=true&w=majority&appName=Cluster0
+      - key: JWT_SECRET
+        value: mesfin_secret_777
+      - key: ADMIN_USERNAME
+        value: mesfin6323@gmail.com
+      - key: ADMIN_PASSWORD
+        value: Alex1221@12
+      - key: ENCRYPTION_KEY
+        value: orthodox_secret_key_777
+      - key: NODE_ENV
+        value: production
