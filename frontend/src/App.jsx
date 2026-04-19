@@ -10,6 +10,8 @@ import Events from './pages/Events';
 import Mentorship from './pages/Mentorship';
 import Settings from './pages/Settings';
 import Login from './pages/Login';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -29,6 +31,8 @@ function App() {
           <main className="max-w-7xl mx-auto px-4 py-8">
             <Routes>
               <Route path="/login" element={<Login />} />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+              <Route path="/reset-password/:token" element={<ResetPassword />} />
               
               <Route path="/" element={
                 <PrivateRoute>

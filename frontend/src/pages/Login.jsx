@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ShieldCheck, Lock, User, ChevronRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -111,6 +112,12 @@ const Login = () => {
                   required
                 />
               </div>
+            </div>
+
+            <div className="flex justify-end pr-2">
+              <Link to="/forgot-password" size="sm" className="text-[10px] font-bold uppercase tracking-widest text-orthodox-gold/60 hover:text-orthodox-gold transition-colors">
+                Forgot Password?
+              </Link>
             </div>
 
             <button 
