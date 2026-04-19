@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { UserCheck, Heart, Users, Star, ArrowRight, Shield } from 'lucide-react';
+import API_BASE_URL from '../api';
 
 const Mentorship = () => {
   const [pairs, setPairs] = useState([]);
@@ -15,8 +16,8 @@ const Mentorship = () => {
   const fetchData = async () => {
     try {
       const [resPairs, resEligible] = await Promise.all([
-        axios.get('http://localhost:5000/api/mentorship'),
-        axios.get('http://localhost:5000/api/mentorship/eligible')
+        axios.get(`${API_BASE_URL}/mentorship`),
+        axios.get(`${API_BASE_URL}/mentorship/eligible`)
       ]);
       setPairs(resPairs.data);
       setEligible(resEligible.data);
@@ -30,7 +31,7 @@ const Mentorship = () => {
   const handlePairing = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:5000/api/members/${selection.menteeId}`, { mentor: selection.mentorId });
+      await axios.put(`${API_BASE_URL}/members/${selection.menteeId}`, { mentor: selection.mentorId });
       setSelection({ mentorId: '', menteeId: '' });
       fetchData();
     } catch (err) {

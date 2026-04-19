@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Calendar, Users, Plus, CheckCircle, Circle, MapPin } from 'lucide-react';
+import API_BASE_URL from '../api';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -22,7 +23,7 @@ const Events = () => {
 
   const fetchEvents = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/events');
+      const res = await axios.get(`${API_BASE_URL}/events`);
       setEvents(res.data);
     } catch (err) {
       console.error(err);
@@ -33,7 +34,7 @@ const Events = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/members');
+      const res = await axios.get(`${API_BASE_URL}/members`);
       setMembers(res.data);
     } catch (err) {
       console.error(err);
@@ -43,7 +44,7 @@ const Events = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/events', formData);
+      await axios.post(`${API_BASE_URL}/events`, formData);
       setShowModal(false);
       setFormData({ title: '', description: '', type: 'Liturgy', date: new Date().toISOString().split('T')[0] });
       fetchEvents();
@@ -54,7 +55,7 @@ const Events = () => {
 
   const toggleAttendance = async (eventId, memberId) => {
     try {
-      await axios.put(`http://localhost:5000/api/events/${eventId}/attend`, { memberId });
+      await axios.put(`${API_BASE_URL}/events/${eventId}/attend`, { memberId });
       fetchEvents();
     } catch (err) {
       console.error(err);

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MessageSquare, Heart, Send, Ghost, User, PlusCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../api';
 
 const PrayerWall = () => {
   const [prayers, setPrayers] = useState([]);
@@ -24,7 +25,7 @@ const PrayerWall = () => {
 
   const fetchPrayers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/prayers');
+      const res = await axios.get(`${API_BASE_URL}/prayers`);
       setPrayers(res.data);
     } catch (err) {
       console.error(err);
@@ -35,7 +36,7 @@ const PrayerWall = () => {
 
   const fetchMembers = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/members');
+      const res = await axios.get(`${API_BASE_URL}/members`);
       setMembers(res.data);
     } catch (err) {
       console.error(err);
@@ -45,7 +46,7 @@ const PrayerWall = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/prayers', formData);
+      await axios.post(`${API_BASE_URL}/prayers`, formData);
       setShowModal(false);
       setFormData({ title: '', content: '', category: 'Spiritual', isAnonymous: false, memberId: '' });
       fetchPrayers();
@@ -57,7 +58,7 @@ const PrayerWall = () => {
   const handleReply = async (id, content) => {
     if (!content.trim()) return;
     try {
-      await axios.post(`http://localhost:5000/api/prayers/${id}/reply`, { content: 'Amen 🙏' });
+      await axios.post(`${API_BASE_URL}/prayers/${id}/reply`, { content: 'Amen 🙏' });
       fetchPrayers();
     } catch (err) {
       console.error(err);

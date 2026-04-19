@@ -15,7 +15,7 @@ const Settings = () => {
     setLoading(true);
     setStatus('');
     try {
-      await axios.post('http://localhost:5000/api/notifications/broadcast', broadcast);
+      await axios.post(`${API_BASE_URL}/notifications/broadcast`, broadcast);
       setStatus('Success! Broadcast sent to Telegram group.');
       setBroadcast({ ...broadcast, message: '' });
     } catch (err) {
