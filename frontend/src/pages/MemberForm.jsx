@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Save, ChevronLeft, Info, Cross } from 'lucide-react';
+import API_BASE_URL from '../api';
 
 const MemberForm = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const MemberForm = () => {
     if (id) {
       const fetchMember = async () => {
         try {
-          const res = await axios.get(`http://localhost:5000/api/members/${id}`);
+          const res = await axios.get(`${API_BASE_URL}/members/${id}`);
           setFormData(res.data);
         } catch (err) {
           console.error(err);
@@ -55,9 +56,9 @@ const MemberForm = () => {
     setLoading(true);
     try {
       if (id) {
-        await axios.put(`http://localhost:5000/api/members/${id}`, formData);
+        await axios.put(`${API_BASE_URL}/members/${id}`, formData);
       } else {
-        await axios.post('http://localhost:5000/api/members', formData);
+        await axios.post(`${API_BASE_URL}/members`, formData);
       }
       navigate('/members');
     } catch (err) {
