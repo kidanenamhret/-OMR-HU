@@ -90,7 +90,7 @@ const Login = () => {
                   className="w-full bg-orthodox-dark/50 border border-zinc-800 rounded-2xl px-12 py-4 focus:outline-none focus:border-orthodox-gold transition-all text-white placeholder:text-zinc-700 shadow-inner" 
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder="e.g. mesfin6323@gmail.com"
+                  placeholder="Enter your email address"
                   required
                 />
               </div>
